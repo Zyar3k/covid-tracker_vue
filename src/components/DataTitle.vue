@@ -11,12 +11,13 @@
 
 <script>
 import moment from "moment";
+import { locale } from "moment/locale/pl";
 export default {
   name: "DataTitle",
   props: ["text", "dataDate"],
   computed: {
     timestamp: function () {
-      return moment(this.dataDate).format("MMMM Do YYYY, h:mm:ss a");
+      return moment(this.dataDate).locale("pl").format("Do MMMM YYYY");
     },
   },
 };

@@ -8,7 +8,7 @@
       v-if="stats.Country"
       class="bg-green-700 text-white rounded p-3 mt-10 focus:outline-none hover:bg-green-600"
     >
-      Clear country
+      Clear Country
     </button>
   </main>
   <main class="flex flex-col align-center justify-center text-center" v-else>
@@ -38,7 +38,6 @@ export default {
     async fetchCovidData() {
       const res = await fetch("https://api.covid19api.com/summary");
       const data = await res.json();
-      console.log(data);
       return data;
     },
     getCountryData(country) {
@@ -47,7 +46,7 @@ export default {
     },
     async clearCountryData() {
       this.loading = true;
-      const data = this.fetchCovidData();
+      const data = await this.fetchCovidData();
       this.title = "Global";
       this.stats = data.Global;
       this.loading = false;
